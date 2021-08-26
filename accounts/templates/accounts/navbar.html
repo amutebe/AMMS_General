@@ -1,0 +1,276 @@
+{% load auth_extras %}
+{%load static%}
+<nav class="navbar navbar-expand-lg">
+<!-- swimbi code start -->
+<link rel="stylesheet" type="text/css" href="menu_files/swimbi.css"/>
+<div id="swimbi">
+    <ul>
+        <li><a data-icon="&#xF015;" href="{% url 'home'%}">Home</a></li>
+        <li><a data-icon="&#xF13C;" >QMS</a>
+            <ul>
+                <li><a data-icon="&#xF0E4;" href="{% url 'home'%}">DashBoard</a></li>
+                <li><a data-icon="&#xF0F7;" >Context</a>
+                    <ul>
+                        <li><a data-icon="&#xF0F0;" >Interested Parties</a>
+                            <ul>
+                                <li><a data-icon="&#xF14B;" href="{% url 'interested_parties'%}">Create</a></li>
+                                <li><a data-icon="&#xF00C;" href="{% url 'ip_pending'%}">Approve</a></li>
+                            </ul>
+                        </li>
+                        <li><a data-icon="&#xF022;" >Issues</a>
+                            <ul>
+                                <li><a data-icon="&#xF14B;" href="{% url 'issues'%}">Create</a></li>
+                                <li><a data-icon="&#xF00C;" href="{% url 'issues_pending'%}">Approve</a></li>
+                            </ul>
+                        </li>
+                        <li><a data-icon="&#xF0A3;" >Compliance</a>
+                            <ul>
+                                <li><a data-icon="&#xF14B;" href="{% url 'regulatory_requirement'%}">Create</a></li>
+                                <li><a data-icon="&#xF00C;" href="{% url 'requirement_pending'%}">Approve</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a data-icon="&#xF00B;" >Planning</a>
+                    <ul>
+                        <li><a data-icon="&#xF12D;" >Risks Assessment</a>
+                            <ul>
+                                <li><a data-icon="&#xF14B;" href="{% url 'issues_pending_risk_assesment'%}">Create</a></li>
+                                <li><a data-icon="&#xF00C;" href="{% url 'risk_pending'%}">Approve</a></li>
+                                <li><a data-icon="&#xF12E;" href="{% url 'risks_due'%}">Verification</a></li>
+                            </ul>
+                        </li>
+                        <li><a data-icon="&#xF14E;" >Opp. Assessment</a>
+                            <ul>
+                                <li><a data-icon="&#xF14B;" href="{% url 'issues_pending_opp_assesment'%}">Create</a></li>
+                                <li><a data-icon="&#xF00C;" href="{% url 'opp_pending'%}">Approve</a></li>
+                                <li><a data-icon="&#xF12E;" href="{% url 'opp_due'%}">Verification</a></li>
+                            </ul>
+                        </li>
+                        <li><a data-icon="&#xF013;" >QMS Planner</a>
+                            <ul>
+                                <li><a data-icon="&#xF14B;" href="{% url 'qms_planner'%}">Create</a></li>
+                                <li><a data-icon="&#xF00C;" href="{% url 'qms_pending'%}">Approve</a></li>
+                                <li><a data-icon="&#xF12E;" href="{% url 'qms_due'%}">Verification</a></li>
+                            </ul>
+                        </li>
+                        <li><a data-icon="&#xF0C0;" >Training Planner</a>
+                            <ul>
+                                <li><a data-icon="&#xF14B;" href="{% url 'training_planner'%}">Create</a></li>
+                                <li><a data-icon="&#xF00C;" href="{% url 'trainplanner_pending'%}">Approve</a></li>
+                                <li><a data-icon="&#xF12E;" href="{% url 'training_due'%}">Verification</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a data-icon="&#xF12E;" >Operations</a>
+                    <ul>
+                        <li><a data-icon="&#xF016;" >Incident</a>
+                            <ul>
+                                <li><a data-icon="&#xF0C5;" href="{% url 'incidentRegister'%}">Log</a></li>
+                                <li><a data-icon="&#xF029;" href="{% url 'incidents_pending_analysis'%}">Analysis</a></li>
+                                <li><a data-icon="&#xF12E;" href="{% url 'incidentregister_due'%}">Verify</a></li>
+                            </ul>
+                        </li>
+                        <li><a data-icon="&#xF19B;" >Training Evaluation</a>
+                            <ul>
+                                <li><a data-icon="&#xF14B;" href="{% url 'trainingReg'%}">Create</a></li>
+                                <li><a data-icon="&#xF12E;" href="{% url 'trainingregister_due'%}">Verify</a></li>
+                            </ul>
+                        </li>
+                        <li><a data-icon="&#xF0A5;" >Corrective Action</a>
+                            <ul>
+                                <li><a data-icon="&#xF017;" href="{% url 'correctiveaction'%}">Request</a></li>
+                                <li><a data-icon="&#xF016;" href="{% url 'correctiveaction_pending_planning'%}">Planning</a></li>
+                                <li><a data-icon="&#xF00C;" href="{% url 'planning_pending'%}">Approve</a></li>
+                                <li><a data-icon="&#xF12E;" href="{% url 'planning_due'%}">Verify</a></li>
+                            </ul>
+                        </li>
+                        <li><a data-icon="&#xF1D9;" >Change Request</a>
+                            <ul>
+                                <li><a data-icon="&#xF14B;" href="{% url 'changerequest'%}">Create</a></li>
+                                <li><a data-icon="&#xF00C;" href="{% url 'changerequest_pending'%}">Approve</a></li>
+                                <!--<li><a data-icon="&#xF12E;" href="{% url 'changerequest_due'%}">Verify</a></li>-->
+                            </ul>
+                        </li>
+                        <li><a data-icon="&#xF005;" >Customer Satisfaction</a>
+                            <ul>
+                                <!--<li><a data-icon="&#xF16B;">Create</a>-->
+                                <li><a data-icon="&#xF10B;" href="{% url 'customersatisfaction_survey_email'%}">Survey</a></li>
+                                <!--<ul>
+                                <li><a data-icon="&#xF10B;" href="{% url 'customersatisfaction_survey_email'%}">Customer</a></li>
+                                <li><a data-icon="&#xF13B;" href="{% url 'customersatisfaction'%}">Staff</a></li>
+                                </ul>
+                                
+                                </li>-->
+                                <li><a data-icon="&#xF14B;" href="{% url 'customersatisfaction_pending_improvement_plan'%}">Pending</a></li>
+                                <li><a data-icon="&#xF12E;" href="{% url 'customersatisfaction_due'%}">Verify</a></li>
+                            </ul>
+                        </li>
+                        <li><a data-icon="&#xF01C;" >Customer Complaint</a>
+                            <ul>
+                                <li><a data-icon="&#xF14B;" href="{% url 'customercomplaint'%}">log</a></li>
+                                <li><a data-icon="&#xF14B;" href="{% url 'customerComplaints_pending_analysis'%}">Analysis</a></li>
+                                
+                                <li><a data-icon="&#xF12E;" href="{% url 'customercomplaint_due'%}">Verify</a></li>
+                            </ul>
+                        </li>
+                        <li><a data-icon="&#xF185;" >Provide Assessment</a>
+                            <ul>
+                                <li><a data-icon="&#xF14B;" href="{% url 'providerassessment'%}">Create</a></li>
+                                <li><a data-icon="&#xF12E;" href="{% url 'providerassessments_due'%}">Verify</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a data-icon="&#xF040;" >Reports</a>
+                    <ul>
+                        <li><a data-icon="&#xF02D;" href="{% url 'documentmanager_report'%}">Document Register</a></li>
+                        <li><a data-icon="&#xF03C;" >Context</a>
+                            <ul>
+                                <li><a data-icon="&#xF1A8;" href="{% url 'ip_report'%}">Interested Parties (IPs) Register</a></li>
+                                <li><a data-icon="&#xF0D0;" href="{% url 'issues_report'%}">Issues Register</a></li>
+                                <li><a data-icon="&#xF0E3;" href="{% url 'regulatory_report'%}">Compliance Register</a></li>
+                            </ul>
+                        </li>
+                        <li><a data-icon="&#xF036;" >Planning</a>
+                            <ul>
+                                <li><a data-icon="&#xF1C9;" href="{% url 'qms_report'%}">QMS Plan</a></li>
+                                <li><a data-icon="&#xF1C6;" href="{% url 'trainingplan_report'%}">Training Plan</a></li>
+                                <li><a data-icon="&#xF1DB;" href="{% url 'opportunity_report'%}">Opportunity Register</a></li>
+                                <li><a data-icon="&#xF00D;" href="{% url 'risks_report'%}">Risk Register</a></li>
+                            </ul>
+                        </li>
+                        <li><a data-icon="&#xF09D;" >Operations</a>
+                            <ul>
+                                <li><a data-icon="&#xF0C5;" href="{% url 'incident_log_report'%}">Incident Log</a></li>
+                                <li><a data-icon="&#xF02B;" href="{% url 'incident_report'%}">Incident Register</a></li>
+                                <li><a data-icon="&#xF044;" href="{% url 'training_register_report'%}">Training Evaluation/Register</a></li>
+                                <li><a data-icon="&#xF1CB;" href="{% url 'providerAssessment_report'%}">Provider Assessment</a></li>
+                                <li><a data-icon="&#xF00C;" href="{% url 'customersatisfaction_report'%}">Customer Satisfaction Survey</a></li>
+                                <li><a data-icon="&#xF0B2;" href="{% url 'customer_complaint_report'%}">Complaints Register</a></li>
+                                <li><a data-icon="&#xF046;" href="{% url 'changeRegister_report'%}">Change Register</a></li>
+                            </ul>
+                        </li>
+                        <li><a data-icon="&#xF1DA;" >Evaluation</a>
+                            <ul>
+                                <li><a data-icon="&#xF115;" href="{% url 'correctiveactionRequest_report'%}">Corrective Action Requests</a></li>
+                                <li><a data-icon="&#xF115;" href="{% url 'correctiveaction_report'%}">Corrective Action Register</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><a data-icon="&#xF108;" ">ITSMS</a>
+            <ul>
+                <li><a data-icon="&#xF00B;" href="#">Planning</a>
+                    <ul>
+                        <li><a data-icon="&#xF12D;" href="">Risk Assessment</a></li>
+                        <li><a data-icon="&#xF0C0;" href="">Risk Treatment Planner</a></li>
+                        <li><a data-icon="&#xf085" href="">Statement of Applicability</a></li>
+                    </ul>
+                </li>
+                <li><a data-icon="&#xF12E;" >Operations</a>
+                    <ul>
+
+                        <li><a data-icon="&#xF016;" >Service Request</a>
+                            <ul>
+                                <li><a data-icon="&#xF0C5;" href="{% url 'services_request'%}">Log</a></li>
+                                <li><a data-icon="&#xF029;" href="{% url 'serviceRequest_pending_planning'%}">Analysis</a></li>
+                                <li><a data-icon="&#xF12E;" href="{% url 'serviceRequest_due'%}">Verify</a></li>
+                            </ul>
+
+                        <li><a data-icon="&#xF023;" href="">Access Request</a></li>
+                        <li><a data-icon="&#xF016;" href="">CMS</a></li>
+                    </ul>
+                </li>
+                <li><a data-icon="&#xF040;" >Reports</a>
+                    <ul>
+                        <li><a data-icon="&#xF02D;" href="">Asset Register</a></li>
+                        <li><a data-icon="&#xF0E3;" href="">Service Catalogue</a></li>
+                        <li><a data-icon="&#xF0D0;" href="">Risk Register</a></li>
+                        <li><a data-icon="&#xF0C9;" href="">Risk Treatment Plan</a></li>
+                        <li><a data-icon="&#xF036;" href="{% url 'service_request_report'%}">Service Requests</a></li>
+                        <li><a data-icon="&#xF09C;" href="#">Access requests</a></li>
+                        <li><a data-icon="&#xF1C0;" href="">CMSDB</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><a data-icon="&#xF13E;" >HSEMS</a></li>
+        <li><a data-icon="&#xF02D;" href="{% url 'doc_manager'%}">DocumentManager</a></li>
+                 
+         <li> <a data-icon="&#xF007;"><welcome>Logged in as, {{request.user}}</welcome></a>
+             <ul>
+             <li><a  data-icon="&#xF040;" href="{% url 'user_profile'%}">My Profile</a></li>
+            
+             </ul>
+        </li>
+       
+       
+       
+       <li>  
+
+{% if request.user|has_group:"Auditor" and request.user|has_group:"Analyst" and request.user|has_group:"TopManager" %}
+    <span><i class="fa fa-envelope" style="font-size:24px;color:Orange"></i></span>
+
+    <span class="badge" style="font-size:16px;color:red"><span class="blinking">{{AnalystTopManagerAuditor_Tasks }}</span></span>
+
+{% elif request.user|has_group:"Analyst" and request.user|has_group:"TopManager" %}
+    <span><i class="fa fa-envelope" style="font-size:24px;color:Orange"></i></span>
+
+    <span class="badge" style="font-size:16px;color:red"><span class="blinking">{{AnalystTopManager_Tasks }}</span></span>
+
+{% elif request.user|has_group:"Analyst" and request.user|has_group:"Auditor" %}
+    <span><i class="fa fa-envelope" style="font-size:24px;color:Orange"></i></span>
+
+    <span class="badge" style="font-size:16px;color:red"><span class="blinking">{{AnalystAuditor_Tasks }}</span></span>
+
+{% elif request.user|has_group:"TopManager" and request.user|has_group:"Auditor" %}
+    <span><i class="fa fa-envelope" style="font-size:24px;color:Orange"></i></span>
+
+    <span class="badge" style="font-size:16px;color:red"><span class="blinking">{{TopManagerAuditor_Tasks }}</span></span>
+
+
+{% elif request.user|has_group:"Auditor" %}
+    <span><i class="fa fa-envelope" style="font-size:24px;color:Orange"></i></span>
+
+    <span class="badge" style="font-size:16px;color:red"><span class="blinking">{{Auditor_Tasks }}</span></span>
+
+{% elif request.user|has_group:"TopManager"%}
+    <span><i class="fa fa-envelope" style="font-size:24px;color:Orange"></i></span>
+
+    <span class="badge" style="font-size:16px;color:red"><span class="blinking">{{TopManager_Tasks }}</span></span>
+
+{% elif request.user|has_group:"Analyst"%}
+    <span><i class="fa fa-envelope" style="font-size:24px;color:Orange"></i></span>
+
+    <span class="badge" style="font-size:16px;color:red"><span class="blinking">{{Analyst_Tasks }}</span></span>
+
+{% elif request.user|has_group:"Executive"%}
+    <span><i class="fa fa-envelope" style="font-size:24px;color:Orange"></i></span>
+
+    <span class="badge" style="font-size:16px;color:red"><span class="blinking">{{Executive_Tasks }}</span></span>
+
+
+
+
+{% else %}
+
+
+{% endif %}	 
+
+    </li>
+    
+        <li><a data-icon="&#xF08B;" href="{% url 'logout'%}">Signout</a></li>
+           <li><a href="{% url 'admin:index' %}">Admin</a></li>
+        
+    </ul>
+<canvas><noscript><a href="//swimbi.com/download/">Here - maker css menu</a> at swimbi.com. All Rights Reserved</noscript></canvas>
+<div id="ie_message"><noscript>Local test in IE is better if you "<a href="http://f-source.com/swimbi/ie-allow-blocked-content/" target="_blank">Allow blocked content</a>" - click the button below.</noscript></div>
+</div>
+<script src="menu_files/swimbi.js"></script>
+<!-- swimbi code end -->
+
+</nav>

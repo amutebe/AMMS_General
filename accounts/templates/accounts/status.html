@@ -1,0 +1,69 @@
+{% load auth_extras %}
+{% load static %}
+
+<div class="row">
+	
+
+	
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="orders-delivered">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Tasks Pending Aproval</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{total_tasks}}</h3>
+			  	</div>
+			</div>
+		
+	</div>
+
+	
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="orders-pending">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Tasks Due Verification</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{total_tasks_pending}}</h3>
+			  	</div>
+			</div>
+	
+	</div>
+	
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="total-orders">
+			  	<div class="card-header">
+				  <h5 class="card-title">Rejected Tasks (Last7Days)</h5>
+			  	</div>
+			  	<div class="card-body">
+				   
+				  
+				  {% if total_tasks_rejected > 0  %}
+   
+ <span class="blinking"><h3 class="card-title">{{total_tasks_rejected}}</a></h3></span>
+</a>
+					
+					{% else %}
+    
+  <h3 class="card-title">{{total_tasks_rejected}}</h3>
+</a>
+                  
+					{% endif %}
+			    	
+					
+				  	
+						
+
+				
+			  	</div>
+			</div>
+	
+	</div>
+</div>
+
+
+
+	
+	
+
+

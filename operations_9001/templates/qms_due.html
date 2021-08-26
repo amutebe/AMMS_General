@@ -1,0 +1,60 @@
+{% extends "accounts/base.html" %} 
+{% block content %}
+
+<div class="col-md-24 order-md-1">
+          <h4 class="mb-3">Due QMS</h4>
+<p class="round2"> 
+
+			<table class="tableizer-table">
+			
+						<thead>
+				<tr class="table-info">
+						<th>ID</th>
+					<th>Plan Date</th>
+					<th>Planner</th>
+					<th>Status</th>
+					<th>Start Date</th>
+					<th>End Date</th>
+					<th>Desc.</th>
+					<th>Additional Description</th>
+					<th>Recheduled Date</th>
+					<th>Comment</th>
+					<th></th>
+				
+					
+				</tr>
+			</tr></thead><tbody>
+				
+						{% for i in products %}
+						<tr>
+					<td>{{i.planner_number}}</td>
+					<td>{{i.plan_date}}</td>
+					<td>{{i.planner}}</td>
+					<td>{{i.status}}</td>
+					<td>{{i.start}}</td>
+					<td>{{i.end}}</td>
+					
+					<td>{{i.description}}</td>
+					<td>{{i.details}}</td>
+					<td>{{i.scheduled}}</td>
+					<td>{{i.verification_failed}}</td>
+        
+					<td><a class="btn btn-sm btn-info" href="{%url 'verify_qms' i.planner_number i.start %}">Action</a></td>
+            
+
+				
+					</tr>
+                    </tbody>
+
+				{%endfor%}
+			
+
+		
+			</table>
+		</div>
+
+
+
+
+
+{% endblock %} 

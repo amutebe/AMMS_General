@@ -1,0 +1,147 @@
+{%  extends 'accounts/base.html' %}
+
+{% block content %}
+  	
+		<div class="col-md-40">
+
+			<div class="col-md-40">
+            
+		
+				<div class="card card-body">
+ <h4 class="mb-3">Incident Register:</h4>
+ <p class="round2"> 
+
+
+<form method="get">
+                     {% csrf_token %}
+                    
+<table  class="tableizer-table" align="left">                
+<thead><tr class="tableizer-firstrow">
+
+
+<th>Summary</th>
+<th>Start Date</th>
+<th>End Date</th>
+<th>Classification</th>
+<th>AssignedTo</th>
+<th></th>
+</tr></thead>
+
+
+<tbody><tr>
+<td>{{myFilter.form.incident_date}}</td>
+<td>{{myFilter.form.start}}</td>
+<td>{{myFilter.form.end}}</td>
+<td>{{myFilter.form.classification}}</td>
+<td>{{myFilter.form.assigned}}</td>
+<td><button class="btn btn-info btn-sm" type="submit">Search</button></td>
+</tr></tbody>
+</table>
+ </form>
+<form method="post">{% csrf_token %} 
+                    
+<table  class="tableizer-table" align="right">                
+<tbody><tr><td><button class="btn btn-success btn-sm" type="submit">Export to excel</button></td>
+</tr></tbody>
+</table>
+ </form>		
+		 
+		  
+				</div> 
+				</div>
+                </div>
+	
+                
+					<table class="tableizer-table">
+						<thead><tr class="tableizer-firstrow">
+					<th>Incident No.</th>
+					<th>Date</th>
+					<th>Time</th>	
+					<th>ReportedBy</th>				
+					
+                    <th>Process</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Details</th>
+					<th>Classification</th>
+				
+                    <th>Containment</th>
+					<th>Addit.Desc</th>
+                     <th>AssignedTo</th>
+                    <th>When</th>
+					<th>Comp.Date</th>
+					<th>Cost</th>
+					<th>Currency</th>
+					<th>Amount</th>
+					
+                    <th>Lesson</th>
+					<th>Report_number</th>
+<th>Component Affected</th>
+<th>Error</th>
+<th>Solution</th>
+<th>Duration</th>
+<th>SupportDocuments</th>
+                    
+					
+				</tr></thead><tbody>
+				
+				{% for i in incident %}
+				
+					<tr>
+					<td>{{i.incident_number}}</td>
+					<td>{{i.incident_number.date}}</td>
+					<td>{{i.incident_number.time}}</td>
+					<td>{{i.incident_number.reporter}}</td>
+				
+
+					
+			
+				
+                     <td>{{i.incident_number.processname}}</td>
+                    <td>{{i.incident_number.incidentype}}</td>
+                    <td>{{i.incident_number.incident_description}}</td>
+                    <td>{{i.incident_number.other}}</td>
+                    <td>{{i.classification}}</td>
+                  
+
+					<td>{{i.correction}}</td>
+					<td>{{i.description}}</td>
+					<td>{{i.assigned}}</td>
+                    <td>{{i.due}}</td>
+                    <td>{{i.completion}}</td>
+                    <td>{{i.get_cost_display}}</td>
+					<td>{{i.get_currency_display}}</td>
+					<td>{{i.costdescription}}</td>
+                    <td>{{i.verification_failed}}</td>
+					<td>{{i.report_number}}</td>
+					<td>{{i.component_affected}}</td>
+					<td>{{i.error}}</td>
+					<td>{{i.solution}}</td>
+<td>
+					{% if i.completion %}
+                 	{{i.completion |timeuntil:i.incident_number.date}} 
+                    {%endif%}  
+					
+					
+					</td>
+
+{% if i.document.url != empty %}
+	<td><a href="{{ i.document.url }}" download="{{ i.document.url }}">Download</a></td>
+{% else %}
+	<td><i>No file<i></td>
+{% endif %}
+
+				
+					</tr>
+                    </tbody>
+
+				{%endfor%}
+						
+					</table>
+                  
+         
+			
+		
+		
+
+{% endblock content %}

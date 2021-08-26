@@ -1,0 +1,89 @@
+
+
+{% extends "accounts/base.html" %} 
+{%load static%}
+{% block content %}
+<br>
+<div class="row">
+<div class="col-md-12">
+<div class="card card-body">
+
+<font color="red">{{form.errors}}</font>
+<form action="" method="POST">
+ 
+ {% csrf_token %}
+  <h5>
+<label for="residuelikelihood"> Verify QMS: <customer class="mb-3">{{pk_test}}</customer></label>
+</h5>
+ <p class="round2">
+
+<div class="form-group" id="verification">
+    
+    <label for="exampleFormControlSelect1">Verification status:</label><br>
+  {{form.qmsstatus}}
+<font color="red">{{form.errors.qmsstatus}}</font>
+</div>
+<div class="form-group" id="completiondateDIV">
+    
+    <label for="exampleFormControlSelect1">Completion Date:</label><br>
+    {{form.completion}}
+    <font color="red">{{form.errors.completion}}</font>
+
+
+</div>
+
+<div class="form-group" id="scheduledDIV">
+    
+    <label for="scheduled">Rescheduled:</label><br>
+    {{form.scheduled}}
+    <font color="red">{{form.errors.scheduled}}</font>
+
+
+</div>
+
+
+<div class="form-group" id="commentDIV">
+    
+    <label for="Comment">Comment:</label><br>
+ 
+       {{form.verification_failed}}
+
+<font color="red">{{form.errors.verification_failed}}</font>
+</div>
+
+
+<br>
+<div class="form-group" id="endDateDIV">
+    
+    <label for="endDate">End DATE:</label><br>
+ 
+      <input type="text" class="form-control" id="end" placeholder="" name="end" {{form.end}}
+
+<font color="red">{{form.errors.end}}</font>
+</div>
+<br>
+
+<p class="round2"> 
+<div class="card card-body">
+					<table class="form-group">
+					<tr> 
+
+
+<td ><a class="btn btn-warning" href="{%url 'qms_due' %}">Cancel</a></td>
+<td align="right"> <input class="btn btn-info" type="submit" name="Confirm" value="Close"></td>
+					</tr>
+          </table>
+</div>
+</form>
+</div>
+</div>
+</div>
+{% endblock %} 
+
+<script>
+
+
+
+ 
+
+</script>

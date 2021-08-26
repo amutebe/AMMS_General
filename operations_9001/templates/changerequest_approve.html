@@ -1,0 +1,126 @@
+
+
+{% extends "accounts/base.html" %} 
+{%load static%}
+{% block content %}
+<br>
+
+
+
+<form action="" method="POST">
+ {% csrf_token %}
+<div class="col-md-12">
+		
+		<div class="card card-body">
+		 <h4 class="mb-3">Change Request Approval: {{Request_No}}</h4>
+ <p class="round2">
+			<table class="table table-sm">
+			
+							<tr class="table-info">
+					
+					<th >Evaluation:</th>
+					<th colspan="2">Additional Description:</th>
+					
+                    
+					
+					
+				</tr>
+				
+			
+				
+					<tr>
+					<td>{{form.evaluation}}</td>
+					<td colspan="2">{{form.evaldesc}}</td>
+									
+				</tr>
+				
+				<tr class="table-info">
+					
+					
+					<th>Risks or Business Impact:</th>
+					<th colspan="2">Details:</th>
+
+                    
+					
+					
+				</tr>
+				
+			
+				
+					<tr>
+					<td>{{form.cost}}</td>
+					<td colspan="2">{{form.costdesc}}</td>
+									
+				</tr>
+				
+				<tr class="table-info">
+					
+
+					<th>Currency:</th>
+					<th>Cost:</th>
+					<th>Details:</th>
+                    
+					
+					
+				</tr>
+				
+			
+				
+					<tr>
+
+					<td>{{form.currency}}</td>
+					<td>{{form.costdescription}}</td>
+					<td>{{form.add_desc}}</td>					
+				</tr>
+			
+			
+			
+			
+			
+				<tr class="table-info">
+					
+					<th>Approval Status:</th>
+					<th colspan="2">Comment:</th>
+                    
+					
+					
+				</tr>
+				
+			
+				
+					<tr>
+					<td>{{form.status}}</td>
+					<td colspan="2"><input type="text" class="form-control" id="rejected"  name="rejected" {{form.rejected}}</td>
+ 
+                 
+				</tr>
+
+                    <tr>
+                    <td>
+                   <div class="text-left">
+                    <a class="btn btn-warning " href="{%url 'changerequest_pending' %}">Cancel</a>
+                   </div>
+                    </td>
+                     
+                    
+                    <td colspan="3">
+                    <div class="text-right">
+                    <input class="btn btn-info" type="submit" name="Confirm">
+                    </div>
+                  
+                    </td>
+                    </tr>
+                
+
+			
+		
+			</table>
+            
+		</div>
+	</div>
+
+
+ 
+</form>
+
+{% endblock %} 

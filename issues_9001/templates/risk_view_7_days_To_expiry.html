@@ -1,0 +1,82 @@
+{%  extends 'accounts/base.html' %}
+
+{% block content %}
+
+
+		<div class="row">
+			<div>
+				
+				
+				<div class="card card-body">
+					<table class="table-bordered">
+						<thead><tr class="table-info">
+					<th>ID</th>
+					<th>Date</th>
+					<th>Assessor</th>					
+					<th>Context</th>
+                    <th>ProcessDesc.</th>
+					<th>SWOT</th>
+					<th>IssueDesc.</th>
+					<th>Details</th>
+                    <th>RiskDesc.</th>
+                   
+                       
+				
+					<th>Ranking</th>
+                       <th>RiskTreatment</th>
+                          <th>Mitigation</th>
+                            <th>MitigationDetails</th>
+                             <th>Responsibility</th>
+					<th>When</th>
+				
+					
+				</tr></thead><tbody>
+				
+				{% for i in products %}
+				
+					<tr>
+					<td>{{i.risk_number}}</td>
+					<td>{{i.risk_date}}</td>
+					<td>{{i.assessor}}</td>
+				
+						{% if i.issue_number != empty %}
+					
+					<td colspan="1">{{i.issue_number.get_context_display}}</td>
+					{% else %}
+					<td colspan="1">{{i.get_context_display}}</td>
+					{% endif %}
+				
+                    <td>{{i.issue_number.get_process_desc_display}}</td>
+					<td>{{i.issue_number.get_process_issues_display}}</td>
+					<td>{{i.issue_number.process_StrengthWeakness}}</td>
+					<td>{{i.issue_number.description}}</td>
+                    <td>{{i.riskdescription}}</td>
+                  
+               
+			
+					<td>{{i.riskrank}}</td>
+                    <td>{{i.risktreatment}}</td>
+                    <td>{{i.riskmitigation}}</td>
+                     <td>{{i.mitigationdesc}}</td>
+                    <td>{{i.responsibility}}</td>
+					<td>{{i.due}}</td>
+					
+
+				
+					</tr>
+                    </tbody>
+
+				{%endfor%}
+						
+					</table>
+				</div>
+				 <div class="text-right">
+                    <a href="{%url 'risks_due' %}"><h6><< Back</h6></a>
+                    </div>
+			</div>
+		
+			
+		</div>
+		
+
+{% endblock content %}
