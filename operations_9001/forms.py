@@ -102,7 +102,7 @@ class trainingregister(ModelForm):
     class Meta:
         model = mod9001_trainingregister 
         exclude = ['training_desc','trainingplanid','training','location','trainer','entered_by','date_today','verification','verification_status','verification_failed','qmsstatus','scheduled','completion']
-        widgets={'record_group':HiddenInput(),'status':forms.HiddenInput,'actionplanother':forms.Textarea(attrs={'rows': 2, 'cols': 40}),'reasonother':forms.Textarea(attrs={'rows': 2, 'cols': 40}),'timeline':DateInput(),'train_date':DateInput(),'completion_date':DateInput(),'job':HorizontalRadioSelect(),'skills':HorizontalRadioSelect(),'indicators':HorizontalRadioSelect(),'able':HorizontalRadioSelect()}
+        widgets={'plan_number':HiddenInput(),'record_group':HiddenInput(),'status':forms.HiddenInput,'actionplanother':forms.Textarea(attrs={'rows': 2, 'cols': 40}),'reasonother':forms.Textarea(attrs={'rows': 2, 'cols': 40}),'timeline':DateInput(),'train_date':DateInput(),'completion_date':DateInput(),'job':HorizontalRadioSelect(),'skills':HorizontalRadioSelect(),'indicators':HorizontalRadioSelect(),'able':HorizontalRadioSelect()}
     
     def clean(self):
         cleaned_data = super().clean()
@@ -267,7 +267,7 @@ class Verifyeproviderassessments(ModelForm):
     class Meta:
         model = mod9001_providerassessment 
         #fields = '__all__'
-        fields=['cost','currency','costdescription','verification','verification_status','verification_failed','qmsstatus','scheduled','completion']
+        fields=['verification','verification_status','verification_failed','qmsstatus','scheduled','completion']
         widgets={'completion':DateInput(),'scheduled':DateInput()}        
 
 

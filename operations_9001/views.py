@@ -437,9 +437,28 @@ def verify_qms(request,pk_test,start):
 
 
 #######################TRAINING REGISTER###############################
+
+##########TRAININGS PENDING EVALUTATION###############
+@login_required(login_url='login')
+def trainings_pending_evaluation(request):
+    if is_Executive(request.user):
+        pendingcar=mod9001_trainingplanner.objects.filter(analysis_flag='No',verification_status='Closed').filter(planner_user_title=20) #get all  pending evaluation by HODs only   
+    else:
+        pendingcar=mod9001_trainingplanner.objects.filter(analysis_flag='No',verification_status='Closed').filter(~Q(planner_user_title=20)).filter(record_group=my_data_group(request.user)) #get all  pending evaluation    
+    context={'pendingcar':pendingcar} 
+    return render(request,'training_Evaluation_pending.html',context)
+
+
+
+
+
+
+
+
+
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['Assessor'])
-def trainingReg(request):
+def trainingReg(request,plan_number):
     #print("PRINTING PRINTING")        
     form=trainingregister(initial={'training_number': Train_no()})
                           
@@ -448,22 +467,23 @@ def trainingReg(request):
         request.POST=request.POST.copy()
         request.POST['entered_by'] = request.user
         request.POST['date_today']=date.today()
-        request.POST['status'] = 1       
+        request.POST['status'] = 1 
+        request.POST['plan_number'] = plan_number      
         form=trainingregister(request.POST)
                         
         if form.is_valid():
 
                 
             form.save()
-            form=trainingregister(initial={'training_number': Train_no()})
-            context={'form':form}
-            return render(request,'trainingregister.html',context)
-            #return redirect('/')
+            #form=trainingregister(initial={'training_number': Train_no()})
+            #context={'form':form}
+            #return render(request,'trainingregister.html',context)
+            return redirect('/trainings_pending_evaluation/')
             
             
           
         
-    context={'form':form}
+    context={'form':form,'plan_number':plan_number}
     return render(request,'trainingregister.html',context)
 
 @login_required(login_url='login')
@@ -1144,7 +1164,7 @@ def providerAssessment_report(request):
 
         writer = csv.writer(response)
        
-        writer.writerow(['Review No.', 'Date', 'Provider', 'Organisation','AppraiseeInternal','AppraiseeExternal','Rating','ImprovementPlan','Addit.Details','Assessor','Timeline','Status','Comment/LessonLearnt'])
+        writer.writerow(['Review No.', 'Date', 'Provider', 'Organisation','AppraiseeInternal','AppraiseeExternal','ResponseTime','ResolutionTime','Quality','Technical','Returns','DeliveryRating','Complaints','Pricing','Rating','ImprovementPlan','Addit.Details','Assessor','Timeline','Status','Comment/LessonLearnt'])
 
     
         for i in providerassessment:
@@ -1209,7 +1229,7 @@ def providerAssessment_report(request):
             #    else:
             #        return " " 
         
-            writer.writerow([i.emp_perfrev_no, i.start,i.get_Provider_display(),i.organisation,i.appraise,i.appraiseename,i.rank,jobknowledg()+ i.get_jobknowledg_display() + flexibility()+ i.get_flexibility_display()+ problemsolving()+ i.get_problemsolving_display()+ Initiativenes()+ i.get_Initiativenes_display()+ planning()+ i.get_planing_display()+ workquality()+ i.get_workquality_display()+ communication()+ i.get_communication_display()+ supervisionmagt()+ i.get_supervisionmagt_display()+ i.get_availabilit_display()
+            writer.writerow([i.emp_perfrev_no, i.start,i.get_Provider_display(),i.organisation,i.appraise,i.appraiseename,i.jobknowledge,i.adaptability,i.problemsolve,i.initiativeness,i.planning,i.work,i.Communication,i.supervision,i.rank,jobknowledg()+ i.get_jobknowledg_display() + flexibility()+ i.get_flexibility_display()+ problemsolving()+ i.get_problemsolving_display()+ Initiativenes()+ i.get_Initiativenes_display()+ planning()+ i.get_planing_display()+ workquality()+ i.get_workquality_display()+ communication()+ i.get_communication_display()+ supervisionmagt()+ i.get_supervisionmagt_display()+ i.get_availabilit_display()
             ,i.nonconfdetails,i.assigned,i.due,i.qmsstatus,i.comment])
             
         return response

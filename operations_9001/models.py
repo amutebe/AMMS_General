@@ -296,6 +296,8 @@ class mod9001_trainingplanner(models.Model):
     entered_by = models.ForeignKey(settings.AUTH_USER_MODEL,null=True, blank=True, related_name='planner_entered_by',on_delete=models.CASCADE)
     date_today=models.DateField("Date created:",default=datetime.now)
     record_group=models.CharField("Data Group",max_length=20,null=True,blank=True) 
+    analysis_flag=models.TextField("Training Evaluation Done?",null=True,blank=True,default='No', help_text='To be uses while filtering complated trainings pending evaluation')
+
 
     def __str__(self):
         return self.plan_number
@@ -453,7 +455,7 @@ class mod9001_incidentregisterStaff(models.Model):
     
     
     def __str__(self):
-        return self.incident_number
+        return f'{self.incident_number}'
 
     
 
